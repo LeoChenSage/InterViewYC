@@ -124,3 +124,9 @@ G:\Work\InterViewYC\Interview\bin\System.Web.Http.Owin.xml
 G:\Work\InterViewYC\Interview\obj\Debug\Interview.csprojResolveAssemblyReference.cache
 G:\Work\InterViewYC\Interview\obj\Debug\Interview.dll
 G:\Work\InterViewYC\Interview\obj\Debug\Interview.pdb
+G:\Work\InterViewYC\Interview\bin\ICSharpCode.SharpZipLib.dll
+G:\Work\InterViewYC\Interview\bin\NPOI.dll
+G:\Work\InterViewYC\Interview\bin\NPOI.OOXML.dll
+G:\Work\InterViewYC\Interview\bin\NPOI.OpenXml4Net.dll
+G:\Work\InterViewYC\Interview\bin\NPOI.OpenXmlFormats.dll
+G:\Work\InterViewYC\Interview\bin\NPOI.xml

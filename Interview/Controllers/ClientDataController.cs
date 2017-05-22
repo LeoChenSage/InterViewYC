@@ -48,24 +48,62 @@ namespace Interview.Controllers
         [HttpPost]
         public ActionResult Edit(Interview.Models.Container.ClientData clientData, string editType)
         {
+            string errorMsg = string.Empty;
+            if (string.IsNullOrWhiteSpace(clientData.ClientName))
+            {
+                errorMsg += "請填客戶姓名、";
+            }
+
+            if (string.IsNullOrWhiteSpace(clientData.Sex.ToString()))
+            {
+                errorMsg += "請選擇客戶性別、";
+            }
+
+            if (string.IsNullOrWhiteSpace(clientData.City.ToString()))
+            {
+                errorMsg += "請選擇縣市、";
+            }
+
+            if (string.IsNullOrWhiteSpace(clientData.Address))
+            {
+                errorMsg += "請輸入地址、";
+            }
+
+            if (string.IsNullOrWhiteSpace(clientData.Budget))
+            {
+                errorMsg += "請輸入預算、";
+            }
+
+            if (string.IsNullOrWhiteSpace(clientData.Mobile))
+            {
+                errorMsg += "請輸入手機號碼、";
+            }
+
+            if (!string.IsNullOrWhiteSpace(errorMsg))
+            {
+                TempData["Message"] = errorMsg.Trim('、');
+                return RedirectToAction("Edit");
+            }
+
+
             string result = string.Empty;
             try
             {
                 if (editType == "新增")
                 {
                     if (ClientData.Insert(clientData))
-                        result = "成功";
+                        result = "新增成功";
                     else
-                        result = "失敗";
+                        result = "新增失敗";
                 }
                 else
                 {
                     if (ClientData.Update(clientData))
-                        result = "成功";
+                        result = "編輯成功";
                     else
-                        result = "失敗";
+                        result = "編輯失敗";
                 }
-                TempData["Result"] = result;
+                TempData["Message"] = result;
                 return RedirectToAction("Index");
             }
             catch
@@ -81,10 +119,10 @@ namespace Interview.Controllers
             try
             {
                 if (ClientData.EditStatus(id, 0))
-                    result = "成功";
+                    result = "刪除成功";
                 else
-                    result = "失敗";
-                TempData["Result"] = result;
+                    result = "刪除失敗";
+                TempData["Message"] = result;
                 return RedirectToAction("Index");
             }
             catch
