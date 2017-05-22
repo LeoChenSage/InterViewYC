@@ -11,8 +11,24 @@ namespace Interview.Controllers
         // GET: ClientData
         public ActionResult Index()
         {
-            var item = ClientData.GetClients();
-            return View(item);
+            var client = ClientData.GetClients();
+            var clientList = new List<InterViewModel.ViewModel.ClientDataViewModel>();
+            foreach (var item in client)
+            {
+                clientList.Add(
+                    new InterViewModel.ViewModel.ClientDataViewModel
+                    {
+                        Id = item.ID,
+                        ClientName = item.ClientName,
+                        Sex = item.Sex,
+                        City = item.City,
+                        Address = item.Address,
+                        Mobile = item.Mobile,
+                        Budget = item.Budget,
+                    });
+            }
+
+            return View(clientList);
         }
 
         public ActionResult Edit(int? id)
@@ -30,15 +46,25 @@ namespace Interview.Controllers
         }
 
         [HttpPost]
-        public ActionResult Edit(Interview.Models.Container.ClientData clientData)
+        public ActionResult Edit(Interview.Models.Container.ClientData clientData, string editType)
         {
             string result = string.Empty;
             try
             {
-                if (ClientData.Insert(clientData))
-                    result = "成功";
+                if (editType == "新增")
+                {
+                    if (ClientData.Insert(clientData))
+                        result = "成功";
+                    else
+                        result = "失敗";
+                }
                 else
-                    result = "失敗";
+                {
+                    if (ClientData.Update(clientData))
+                        result = "成功";
+                    else
+                        result = "失敗";
+                }
                 TempData["Result"] = result;
                 return RedirectToAction("Index");
             }
@@ -51,17 +77,14 @@ namespace Interview.Controllers
 
         public ActionResult Delete(int id)
         {
-            return View();
-        }
-
-
-        [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
-        {
+            string result = string.Empty;
             try
             {
-                // TODO: Add delete logic here
-
+                if (ClientData.EditStatus(id, 0))
+                    result = "成功";
+                else
+                    result = "失敗";
+                TempData["Result"] = result;
                 return RedirectToAction("Index");
             }
             catch

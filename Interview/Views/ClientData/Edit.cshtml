@@ -35,7 +35,7 @@
                     地址
                 </label>
                 <div class="col-md-9">
-                    @Html.DropDownListFor(x => x.City, new SelectList(ViewBag.Citys, "KeyID", "KeyName", Model != null ? Model.City : 0), new { id = "ddlCity" })
+                    @Html.DropDownListFor(x => x.City, new SelectList(ViewBag.Citys, "KeyID", "KeyName", Model != null ? Model.City : 0))
                     @Html.TextBoxFor(x => x.Address)
                 </div>
             </div>
@@ -60,6 +60,7 @@
                 </div>
             </div>
         </div>
+        <input type="hidden" name="editType" value="@ViewBag.EditMode" />
         <div class="form-actions">
             <div class="row">
                 <div class="col-md-offset-6 col-md-6">
@@ -68,6 +69,5 @@
                 </div>
             </div>
         </div>
-
     }
 </div>

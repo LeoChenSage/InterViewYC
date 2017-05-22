@@ -9,8 +9,8 @@
     <Property Name="Sex" Type="int" Nullable="false" />
     <Property Name="City" Type="int" Nullable="false" />
     <Property Name="Address" Type="nvarchar" MaxLength="200" Nullable="false" />
-    <Property Name="Budget" Type="nchar" MaxLength="10" Nullable="false" />
-    <Property Name="Mobile" Type="nchar" MaxLength="20" Nullable="false" />
+    <Property Name="Budget" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="Mobile" Type="varchar" MaxLength="20" Nullable="false" />
     <Property Name="CreateDate" Type="datetime" Nullable="false" />
     <Property Name="UpdateDate" Type="datetime" Nullable="false" />
     <Property Name="Status" Type="int" Nullable="false" />

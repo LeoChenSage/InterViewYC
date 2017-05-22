@@ -1,4 +1,4 @@
-﻿@model List<Interview.Models.Container.ClientData>
+﻿@model List<InterViewModel.ViewModel.ClientDataViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -18,6 +18,7 @@
                 <th>地址</th>
                 <th>手機</th>
                 <th>預算</th>
+                <th width="300">功能</th>
             </tr>
         </thead>
         <tbody>
@@ -25,10 +26,11 @@
             {
                 <tr>
                     <th>@item.ClientName</th>
-                    <th>@item.Sex</th>
-                    <th>@item.City @item.Address</th>
+                    <th>@item.SexType</th>
+                    <th>@item.FullAddress</th>
                     <th>@item.Mobile</th>
-                    <th>@item.Budget 萬元</th>
+                    <th>@item.BudgetDollar</th>
+                    <th>@Html.ActionLink("編輯", "Edit", new { id = item.Id }) @Html.ActionLink("刪除", "Delete", new { id = item.Id, status = 0 })</th>
                 </tr>
             }
         </tbody>
