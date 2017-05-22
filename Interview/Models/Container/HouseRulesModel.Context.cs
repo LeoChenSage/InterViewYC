@@ -26,5 +26,6 @@ namespace Interview.Models.Container
         }
     
         public virtual DbSet<KeyValue> KeyValue { get; set; }
+        public virtual DbSet<ClientData> ClientData { get; set; }
     }
 }

@@ -6,6 +6,7 @@
     <edmx:Diagrams>
       <Diagram DiagramId="cfad1c51a80a48818e48aae409f5b657" Name="Diagram1">
         <EntityTypeShape EntityType="HouseRulesModel.KeyValue" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HouseRulesModel.ClientData" Width="1.5" PointX="0.75" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
