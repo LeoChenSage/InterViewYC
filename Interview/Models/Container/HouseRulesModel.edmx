@@ -17,6 +17,8 @@
           <Property Name="Budget" Type="nchar" MaxLength="10" Nullable="false" />
           <Property Name="Mobile" Type="nchar" MaxLength="20" Nullable="false" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetime" Nullable="false" />
+          <Property Name="Status" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="KeyValue">
           <Key>
@@ -62,6 +64,8 @@
           <Property Name="Budget" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="true" />
           <Property Name="Mobile" Type="String" Nullable="false" MaxLength="20" FixedLength="true" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Status" Type="Int32" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -83,6 +87,8 @@
           <EntitySetMapping Name="ClientData">
             <EntityTypeMapping TypeName="HouseRulesModel.ClientData">
               <MappingFragment StoreEntitySet="ClientData">
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
                 <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
                 <ScalarProperty Name="Mobile" ColumnName="Mobile" />
                 <ScalarProperty Name="Budget" ColumnName="Budget" />

@@ -1,0 +1,73 @@
+﻿@model Interview.Models.Container.ClientData
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>@ViewBag.EditMode</h2>
+<div>
+    @using (Html.BeginForm("Edit", "ClientData", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-md-3">
+                    姓名
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(x => x.ClientName)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-md-3">
+                    性別
+                </label>
+                <div class="col-md-9">
+                    <label>@Html.RadioButtonFor(x => x.Sex, "0")女性</label>
+                    <label>@Html.RadioButtonFor(x => x.Sex, "1")男性</label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-md-3">
+                    地址
+                </label>
+                <div class="col-md-9">
+                    @Html.DropDownListFor(x => x.City, new SelectList(ViewBag.Citys, "KeyID", "KeyName", Model != null ? Model.City : 0), new { id = "ddlCity" })
+                    @Html.TextBoxFor(x => x.Address)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-md-3">
+                    手機
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(x => x.Mobile)
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="form-group">
+                <label class="control-label col-md-3">
+                    預算(萬元)
+                </label>
+                <div class="col-md-9">
+                    @Html.TextBoxFor(x => x.Budget)
+                </div>
+            </div>
+        </div>
+        <div class="form-actions">
+            <div class="row">
+                <div class="col-md-offset-6 col-md-6">
+                    <button type="submit" class="btn green">存檔</button>
+                    <button type="button" class="btn default" onclick="location.href='@Url.Action("index")'">取消</button>
+                </div>
+            </div>
+        </div>
+
+    }
+</div>
