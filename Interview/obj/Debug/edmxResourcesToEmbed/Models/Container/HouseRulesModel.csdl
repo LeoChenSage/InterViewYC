@@ -13,6 +13,7 @@
   <EntityContainer Name="HouseRulesEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="KeyValue" EntityType="Self.KeyValue" />
     <EntitySet Name="ClientData" EntityType="HouseRulesModel.ClientData" />
+    <EntitySet Name="AdminAccount" EntityType="HouseRulesModel.AdminAccount" />
   </EntityContainer>
   <EntityType Name="ClientData">
     <Key>
@@ -28,5 +29,17 @@
     <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
     <Property Name="Status" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="AdminAccount">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Account" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="AdminName" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Status" Type="Int32" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Nullable="false" Precision="3" />
   </EntityType>
 </Schema>

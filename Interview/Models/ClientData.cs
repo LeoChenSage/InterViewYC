@@ -30,6 +30,44 @@ namespace InterViewModel
         }
 
         /// <summary>
+        /// 抓所有預約資訊的ViewModel
+        /// </summary>
+        /// <returns></returns>
+        public static List<Interview.ViewModel.ClientDataViewModel> GetClientsViewModel()
+        {
+            try
+            {
+                var query = new List<Interview.Models.Container.ClientData>();
+                using (var context = new HouseRulesEntities())
+                {
+                    query = context.ClientData.Where(x => x.Status == 1).ToList();
+                }
+
+                var clientList = new List<Interview.ViewModel.ClientDataViewModel>();
+                foreach (var item in query)
+                {
+                    clientList.Add(
+                        new Interview.ViewModel.ClientDataViewModel
+                        {
+                            Id = item.ID,
+                            ClientName = item.ClientName,
+                            Sex = item.Sex,
+                            City = item.City,
+                            Address = item.Address,
+                            Mobile = item.Mobile,
+                            Budget = item.Budget,
+                        });
+                }
+
+                return clientList;
+            }
+            catch
+            {
+                return new List<Interview.ViewModel.ClientDataViewModel>();
+            }
+        }
+
+        /// <summary>
         /// 抓指定預約資訊
         /// </summary>
         /// <param name="id"></param>

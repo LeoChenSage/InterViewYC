@@ -12,17 +12,14 @@ namespace Interview.Models.Container
     using System;
     using System.Collections.Generic;
     
-    public partial class ClientData
+    public partial class AdminAccount
     {
         public int ID { get; set; }
-        public string ClientName { get; set; }
-        public int Sex { get; set; }
-        public int City { get; set; }
-        public string Address { get; set; }
-        public string Budget { get; set; }
-        public string Mobile { get; set; }
+        public string Account { get; set; }
+        public string Password { get; set; }
+        public string AdminName { get; set; }
+        public int Status { get; set; }
         public System.DateTime CreateDate { get; set; }
         public System.DateTime UpdateDate { get; set; }
-        public int Status { get; set; }
     }
 }

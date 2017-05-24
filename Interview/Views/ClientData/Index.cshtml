@@ -1,4 +1,4 @@
-﻿@model List<InterViewModel.ViewModel.ClientDataViewModel>
+﻿@model List<Interview.ViewModel.ClientDataViewModel>
 
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -8,6 +8,20 @@
 
 <table class="ui celled segment table">
     <thead>
+        <tr>
+            <th colspan="12">
+                <div class="ui teal basic button">
+                    <a href="@Url.Action("Edit")">
+                        <i class="user icon"></i>新增
+                    </a>
+                </div>
+                <div class="ui teal basic button">
+                    <a href="@Url.Action("Export")">
+                        <i class="download icon"></i>下載
+                    </a>
+                </div>
+            </th>
+        </tr>
         <tr>
             <th>客戶姓名</th>
             <th>客戶性別</th>
@@ -38,16 +52,4 @@
             </tr>
         }
     </tbody>
-    <tfoot>
-        <tr>
-            <th colspan="12">
-                <div class="ui teal basic button">
-
-                    <a href="@Url.Action("Edit")">
-                        <i class="user icon"></i>新增
-                    </a>
-                </div>
-            </th>
-        </tr>
-    </tfoot>
 </table>

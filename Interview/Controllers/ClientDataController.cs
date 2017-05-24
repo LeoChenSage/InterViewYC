@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using InterViewModel;
+using Utility;
+
 namespace Interview.Controllers
 {
     public class ClientDataController : Controller
@@ -11,24 +13,9 @@ namespace Interview.Controllers
         // GET: ClientData
         public ActionResult Index()
         {
-            var client = ClientData.GetClients();
-            var clientList = new List<InterViewModel.ViewModel.ClientDataViewModel>();
-            foreach (var item in client)
-            {
-                clientList.Add(
-                    new InterViewModel.ViewModel.ClientDataViewModel
-                    {
-                        Id = item.ID,
-                        ClientName = item.ClientName,
-                        Sex = item.Sex,
-                        City = item.City,
-                        Address = item.Address,
-                        Mobile = item.Mobile,
-                        Budget = item.Budget,
-                    });
-            }
+            var client = ClientData.GetClientsViewModel();
 
-            return View(clientList);
+            return View(client);
         }
 
         public ActionResult Edit(int? id)
@@ -130,5 +117,15 @@ namespace Interview.Controllers
                 return View();
             }
         }
+
+
+        public FileResult Export()
+        {
+            var query = ClientData.GetClientsViewModel();
+            return File(query.ExportExcel(), "application/download", "客戶預約資料.xls");
+        }
+
+
+
     }
 }
