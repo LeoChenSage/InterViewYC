@@ -130,3 +130,9 @@ G:\Work\InterViewYC\Interview\bin\NPOI.OOXML.dll
 G:\Work\InterViewYC\Interview\bin\NPOI.OpenXml4Net.dll
 G:\Work\InterViewYC\Interview\bin\NPOI.OpenXmlFormats.dll
 G:\Work\InterViewYC\Interview\bin\NPOI.xml
+D:\PetProject\Interview\Interview\bin\ICSharpCode.SharpZipLib.dll
+D:\PetProject\Interview\Interview\bin\NPOI.dll
+D:\PetProject\Interview\Interview\bin\NPOI.OOXML.dll
+D:\PetProject\Interview\Interview\bin\NPOI.OpenXml4Net.dll
+D:\PetProject\Interview\Interview\bin\NPOI.OpenXmlFormats.dll
+D:\PetProject\Interview\Interview\bin\NPOI.xml

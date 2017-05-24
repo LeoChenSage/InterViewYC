@@ -30,7 +30,7 @@ namespace InterViewModel
         /// <summary>
         /// 抓指定的keyvalue
         /// </summary>
-        /// <param name="keyId"></param>
+        /// 
         /// <returns></returns>
         public static KeyValue GetKeyValueById(int keyId)
         {

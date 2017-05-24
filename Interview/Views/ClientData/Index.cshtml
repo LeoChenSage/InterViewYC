@@ -1,47 +1,53 @@
 ﻿@model List<InterViewModel.ViewModel.ClientDataViewModel>
 
 @{
-    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
-<div>
-    <a class="btn btn-default" href="@Url.Action("Edit")"><i style="color:green;font-size:large">新增</i></a>
-</div>
-@{
-    <table class="table">
-        <thead>
+<h2>客戶預約列表</h2>
+
+<table class="ui celled segment table">
+    <thead>
+        <tr>
+            <th>客戶姓名</th>
+            <th>客戶性別</th>
+            <th>地址</th>
+            <th>手機</th>
+            <th>預算</th>
+            <th width="300">功能</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
             <tr>
-                <th>客戶姓名</th>
-                <th>客戶性別</th>
-                <th>地址</th>
-                <th>手機</th>
-                <th>預算</th>
-                <th width="300">功能</th>
+                <th>@item.ClientName</th>
+                <th>@item.SexType</th>
+                <th>@item.FullAddress</th>
+                <th>@item.Mobile</th>
+                <th>@item.BudgetDollar</th>
+                <th>
+                    <a href="@Url.Action("Edit", new { id = item.Id })">
+                        <i class="ui button">編輯</i>
+                    </a>
+                    <a href="@Url.Action("Delete", new { id = item.Id, status = 0 })"
+                       onclick="return confirm('確定要刪除嗎?');">
+                        <i class="ui button">刪除</i>
+                    </a>
+                </th>
             </tr>
-        </thead>
-        <tbody>
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <th>@item.ClientName</th>
-                    <th>@item.SexType</th>
-                    <th>@item.FullAddress</th>
-                    <th>@item.Mobile</th>
-                    <th>@item.BudgetDollar</th>
-                    <th>
-                        @Html.ActionLink("編輯", "Edit", new { id = item.Id }) @Html.ActionLink("刪除", "Delete", new { id = item.Id, status = 0 },
-                        new { onclick = "return confirm('確定要刪除嗎?');" })
-                    </th>
-                </tr>
-            }
-        </tbody>
-    </table>
-    if (TempData["Message"] != null && !string.IsNullOrWhiteSpace(TempData["Message"].ToString()))
-    {
-        <script>alert("@TempData["Message"].ToString()");</script>
-    }
-}
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="12">
+                <div class="ui teal basic button">
 
-
+                    <a href="@Url.Action("Edit")">
+                        <i class="user icon"></i>新增
+                    </a>
+                </div>
+            </th>
+        </tr>
+    </tfoot>
+</table>
