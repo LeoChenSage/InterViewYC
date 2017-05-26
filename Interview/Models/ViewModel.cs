@@ -15,6 +15,7 @@ namespace Interview.ViewModel
         public string hostname { get; set; }
     }
 
+    //客戶資料View Model，EXCEL用同一個
     public class ClientDataViewModel
     {
         [ExportIgnore]

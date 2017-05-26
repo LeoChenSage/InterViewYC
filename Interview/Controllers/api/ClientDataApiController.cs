@@ -1,55 +1,34 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using System.Web.Security;
+using System.Net;
+using System.Net.Http;
+using System.Web.Http;
 using InterViewModel;
 using Utility;
+using System.Text;
 
-namespace Interview.Controllers
+namespace Interview.ApiControllers
 {
-    [Authorize]
-    public class ClientDataController : Controller
+    public class ClientDataApiController : ApiController
     {
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <returns></returns>
-        public ActionResult Index()
+        public HttpResponseMessage Get()
         {
+            var res = new HttpResponseMessage(HttpStatusCode.OK);
+            var jsSerilaizer = new System.Web.Script.Serialization.JavaScriptSerializer();
+            res.Content = new StringContent(jsSerilaizer.Serialize(new { status = 0 }));
+            res.Content.Headers.ContentType = new System.Net.Http.Headers.MediaTypeHeaderValue("application/json");
             var client = ClientData.GetClientsViewModel();
 
-            return View(client);
-        }
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public ActionResult Edit(int? id)
-        {
-            var citys = KeyValues.GetKeyValues();
-            ViewBag.Citys = citys;
-            if (id.HasValue)
+            if (client != null)
             {
-                var item = ClientData.GetClientById(id.Value);
-                ViewBag.EditMode = "編輯";
-                return View(item);
+                res.Content = new StringContent(jsSerilaizer.Serialize(client), Encoding.UTF8, "application/json");
             }
-            ViewBag.EditMode = "新增";
-            return View();
+
+            return res;
         }
 
-        /// <summary>
-        /// 編輯/新增客戶資料
-        /// </summary>
-        /// <param name="clientData"></param>
-        /// <param name="editType"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public ActionResult Edit(Interview.Models.Container.ClientData clientData, string editType)
+        public IHttpActionResult Post(Interview.Models.Container.ClientData clientData, string editType)
         {
             //前台有檢查但後台還是再檢查一次好了
             string errorMsg = string.Empty;
@@ -85,10 +64,8 @@ namespace Interview.Controllers
 
             if (!string.IsNullOrWhiteSpace(errorMsg))
             {
-                TempData["Message"] = errorMsg.Trim('、');
-                return RedirectToAction("Edit");
+                return Ok(new { status = -1, message = errorMsg.Trim('、') });
             }
-
 
             string result = string.Empty;
             try
@@ -107,21 +84,15 @@ namespace Interview.Controllers
                     else
                         result = "編輯失敗";
                 }
-                TempData["Message"] = result;
-                return RedirectToAction("Index");
+                return Ok(new { status = 1, message = result });
             }
             catch
             {
-                return View();
+                return Ok(new { status = 0, message = "失敗" });
             }
         }
 
-        /// <summary>
-        /// 刪除，status改成0
-        /// </summary>
-        /// <param name="id"></param>
-        /// <returns></returns>
-        public ActionResult Delete(int id)
+        public IHttpActionResult Delete(int id)
         {
             string result = string.Empty;
             try
@@ -130,26 +101,14 @@ namespace Interview.Controllers
                     result = "刪除成功";
                 else
                     result = "刪除失敗";
-                TempData["Message"] = result;
-                return RedirectToAction("Index");
+
+                return Ok(new { status = 1, message = result });
             }
             catch
             {
-                return View();
+                return Ok(new { status = 0, message = "刪除失敗" });
             }
         }
-
-        /// <summary>
-        /// 匯出excel
-        /// </summary>
-        /// <returns></returns>
-        public FileResult Export()
-        {
-            var query = ClientData.GetClientsViewModel();
-            return File(query.ExportExcel(), "application/download", "客戶預約資料.xls");
-        }
-
-
 
     }
 }

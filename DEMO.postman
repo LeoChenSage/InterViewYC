@@ -1,0 +1,113 @@
+{
+	"id": "efc70a83-7c04-33be-90b9-8278dadad427",
+	"name": "DEMO",
+	"description": "",
+	"order": [
+		"a7fc0f00-d289-3259-0aaa-2a070a19661b",
+		"60fc1f11-d011-c7ec-773e-7f90f38a871f",
+		"ba80ea6f-718b-2cfa-1410-46ba12947e26"
+	],
+	"folders": [],
+	"timestamp": 1495787565740,
+	"owner": "",
+	"public": false,
+	"requests": [
+		{
+			"id": "60fc1f11-d011-c7ec-773e-7f90f38a871f",
+			"headers": "Content-Type: application/x-www-form-urlencoded\n",
+			"url": "http://localhost:64659/api/ClientDataApi?edittype=新增",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "efc70a83-7c04-33be-90b9-8278dadad427",
+			"data": [
+				{
+					"key": "clientname",
+					"value": "david",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "sex",
+					"value": "1",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "city",
+					"value": "2",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "address",
+					"value": "聖約號",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "budget",
+					"value": "1200",
+					"type": "text",
+					"enabled": true
+				},
+				{
+					"key": "mobile",
+					"value": "0912546738",
+					"type": "text",
+					"enabled": true
+				}
+			],
+			"dataMode": "urlencoded",
+			"name": "POST",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495787577215,
+			"version": 2,
+			"responses": [],
+			"tests": "",
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "a7fc0f00-d289-3259-0aaa-2a070a19661b",
+			"headers": "",
+			"url": "http://localhost:64659/api/ClientDataapi",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "efc70a83-7c04-33be-90b9-8278dadad427",
+			"data": null,
+			"dataMode": "params",
+			"name": "GET",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495787565740,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "ba80ea6f-718b-2cfa-1410-46ba12947e26",
+			"headers": "",
+			"url": "http://localhost:64659/api/ClientDataapi/21",
+			"pathVariables": {},
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "efc70a83-7c04-33be-90b9-8278dadad427",
+			"data": null,
+			"dataMode": "params",
+			"name": "DELETE",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1495787584639,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

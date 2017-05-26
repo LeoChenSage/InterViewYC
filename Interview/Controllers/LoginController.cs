@@ -10,15 +10,13 @@ using System.Web.Script.Serialization;
 using System.Threading.Tasks;
 using Utility;
 
-namespace Interview.Views.Login
+namespace Interview.Controllers
 {
     public class LoginController : Controller
     {
         // GET: Login
         public ActionResult Index()
         {
-            FormsAuthentication.SignOut();
-
             return View();
         }
 
@@ -37,18 +35,18 @@ namespace Interview.Views.Login
                 Session.RemoveAll();
 
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1,
-                  user.Account,//你想要存放在 User.Identy.Name 的值，通常是使用者帳號
+                  user.Account,
                   DateTime.Now,
-                  DateTime.Now.AddMinutes(30),
-                  false,//將管理者登入的 Cookie 設定成 Session Cookie
-                  user.Name,//userdata看你想存放啥
+                  DateTime.Now.AddDays(1),
+                  false,
+                  user.Name,
                   FormsAuthentication.FormsCookiePath);
 
                 string encTicket = FormsAuthentication.Encrypt(ticket);
 
                 Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
 
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "ClientData");
             }
 
             TempData["message"] = "登入失敗";
